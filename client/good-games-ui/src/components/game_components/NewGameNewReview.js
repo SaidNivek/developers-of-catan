@@ -4,7 +4,7 @@ import Modal from "../Modal";
 import { useNavigate } from "react-router-dom";
 
 function NewGameNewReview({ name, id }) {
-  const [nextId, setNextId] = useState(0);
+	const [nextId, setNextId] = useState(0);
 	const [reviews, setReviews] = useState([]);
 	const [errors, setErrors] = useState([]);
 	const [showModal, setShowModal] = useState(false);
@@ -16,8 +16,8 @@ function NewGameNewReview({ name, id }) {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-    getNextGameId()
-		setGame({  gameId: nextId.data, bggId: id, name: name });
+		getNextGameId()
+		setGame({ gameId: nextId.data, bggId: id, name: name });
 	}, []);
 
 	const handleChange = (event) => {
@@ -37,26 +37,26 @@ function NewGameNewReview({ name, id }) {
 		setReview(newReview);
 	};
 
-  const getNextGameId = () => {
-    fetch(`${addGameUrl}/gameid`)
-    .then((response) => {
-      if (response.status === 200 || response.status === 400) {
-        return response.json();
-      } else {
-        return Promise.reject(`Unexpected status code: ${response.status}`);
-      }
-    })
-    .then((data) => {
-      if (data) {
+	const getNextGameId = () => {
+		fetch(`${addGameUrl}/gameid`)
+			.then((response) => {
+				if (response.status === 200 || response.status === 400) {
+					return response.json();
+				} else {
+					return Promise.reject(`Unexpected status code: ${response.status}`);
+				}
+			})
+			.then((data) => {
+				if (data) {
 
-        setNextId({
-          data
-        });
-        setErrors(data);
-      }
-    })
-    .catch(console.log);
-  }
+					setNextId({
+						data
+					});
+					setErrors(data);
+				}
+			})
+			.catch(console.log);
+	}
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -94,7 +94,7 @@ function NewGameNewReview({ name, id }) {
 
 	const handleModalOpen = () => {
 		setShowModal(true);
-    addGame();
+		addGame();
 	};
 
 	const handleModalClose = () => {
@@ -175,7 +175,7 @@ function NewGameNewReview({ name, id }) {
 				}
 			})
 			.catch(console.log);
-      navigate(`/game/${game.bggId}`)
+		navigate(`/game/${game.bggId}`)
 	};
 
 	return (
