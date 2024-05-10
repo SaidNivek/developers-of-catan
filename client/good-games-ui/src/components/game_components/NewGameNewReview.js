@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import Modal from "../Modal";
 import { useNavigate } from "react-router-dom";
 
+
 function NewGameNewReview({ name, id, resetGame }) {
   const [nextId, setNextId] = useState(0);
 	const [reviews, setReviews] = useState([]);
